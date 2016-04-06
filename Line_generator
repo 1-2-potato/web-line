@@ -1,0 +1,78 @@
+//////////////////////////////////////////////////////////////////
+// File Name: Empty_Program.cpp
+// Author: Alexander Kern
+// Email Address: kernalex6@gmail.com
+// Description: Your Description Goes Here
+// Last Changed: DODATE
+/////////////////////////////////////////////////////////////////
+
+
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <iomanip>		// for converting from int to string
+#include <locale>		// for converting from int to string
+#include <sstream>		// for converting from int to string
+
+
+/*
+*/
+
+using namespace std;
+int main()
+{
+	/////////////////////////////////////////////////////////////////////////////////////////
+	// Declare variables
+	srand(time(0));
+	ofstream fout;										// data pipe for writing
+	ifstream fin;										// data pipe for reading
+	
+												
+	int  numberLines;								
+		
+	/////////////////////////////////////////////////////////////////////////////////////////
+	// Input
+	
+	fout.open("line.svg");								// finishes up the file
+	if(fout.fail()){									
+		cout << "Output file opening failed.\n";
+		exit(1);
+	}
+	fout << "<?xml version=\"1.0\" standalone=\"no\"?>\n";
+	
+	cout << "Enter the number of lines you want randomized:\n";
+	cin  >> numberLines;
+	
+	fout << "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1/1DTD/svg11.dtd\">\n";
+	fout << "<svg width = \"" << 1500 << "\" height = \"500\" xmlns=\"http://www.w3.org/2000/svg\">\n\n";
+	
+	for(int i = 0; i < numberLines; i++){
+		fout << "<line x1=\"" << (rand() % 1501) <<"\" y1=\"500\" x2=\"" << (rand() % 1501) << "\" y2=\"0\" style=\"stroke:purple;stroke-width:1\"/>\n";
+	}
+	fout << "\n";
+	fout << "<line x1=\"0\" y1=\"0\" x2=\"" << (1500) << "\" y2=\"0\" style=\"stroke:purple;stroke-width:2\"/>\n";
+	fout << "<line x1=\"0\" y1=\"500\" x2=\"" << (1500) << "\" y2=\"500\" style=\"stroke:purple;stroke-width:2\"/>\n";
+	fout << "</svg>";	
+
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	// Calculation
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	// Output
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	// Pause
+	
+	
+	fout.close();
+	fin.close();
+system("Pause");
+return 0;
+}
